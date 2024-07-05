@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Openseadragon Multi-Image</title>
+    <style>
+      /* ボディとHTMLの余分なマージンとパディングを削除 */
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%; /* 全高さを使用 */
+      }
+      .viewer-container {
+        height: 100vh;
+        background-color: lightgray;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/2.4.2/openseadragon.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/2.4.2/openseadragon.min.js"></script>
+  </head>
+  <body>
+    <div id="viewer" class="viewer-container"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
