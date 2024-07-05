@@ -4,7 +4,7 @@ const images = [
     "https://dl.ndl.go.jp/api/iiif/1301543/R0000003/info.json"
 ];
 
-var viewer = OpenSeadragon({
+const viewer = OpenSeadragon({
     id: "viewer",
     prefixUrl: "https://cdnjs.cloudflare.com/ajax/libs/openseadragon/2.4.2/images/",
     tileSources: images
@@ -13,19 +13,14 @@ var viewer = OpenSeadragon({
 const direction = "right-to-left";
 
 viewer.addHandler('open', function () {
-    var i, tiledImage;
     var count = viewer.world.getItemCount();
 
-    for (i = 0; i < count; i++) {
-        tiledImage = viewer.world.getItemAt(i);
-        let position;
-        if (direction === "right-to-left") {
-            position = new OpenSeadragon.Point(count - i - 1, 0);
-        } else {
-            position = new OpenSeadragon.Point(i, 0);
-        }
-
+    for (let i = 0; i < count; i++) {
+        const tiledImage = viewer.world.getItemAt(i);
+        const positionIndex = direction === "right-to-left" ? count - i - 1 : i;
+        const position = new OpenSeadragon.Point(positionIndex, 0);
         tiledImage.setPosition(position, true);
     }
+
     viewer.viewport.fitBounds(viewer.world.getHomeBounds(), true);
 });
